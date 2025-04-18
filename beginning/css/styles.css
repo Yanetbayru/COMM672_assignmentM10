@@ -510,8 +510,36 @@ form#contactForm {
   ::placeholder {
     font-style: italic;
     color: #999;
-  }.form-field {
+
     /* Highlight required + invalid fields in red */
+form#contactForm input:required:invalid,
+form#contactForm textarea:required:invalid,
+form#contactForm select:required:invalid {
+  border: 2px solid red;
+  background-color: #ffe5e5;
+}
+
+/* Highlight required + valid fields in green */
+form#contactForm input:required:valid,
+form#contactForm textarea:required:valid,
+form#contactForm select:required:valid {
+  border: 2px solid green;
+  background-color: #eaffea;
+}
+
+/* Optional fields: green when filled */
+form#contactForm input:not([required]):not(:placeholder-shown),
+form#contactForm input:not([required]):not(:placeholder-shown),
+form#contactForm textarea:not([required]):not(:placeholder-shown) {
+  border: 2px solid green;
+}
+/* Transition for smooth border effect */
+form#contactForm input,
+form#contactForm textarea,
+form#contactForm select {
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+/* Highlight required + invalid fields in red */
 form#contactForm input:required:invalid,
 form#contactForm textarea:required:invalid,
 form#contactForm select:required:invalid {
@@ -533,10 +561,9 @@ form#contactForm textarea:not([required]):not(:placeholder-shown) {
   border: 2px solid green;
 }
 
-/* Transition for smooth border effect */
+/* Smooth transition */
 form#contactForm input,
 form#contactForm textarea,
 form#contactForm select {
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
-
